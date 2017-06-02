@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentGroupMap xmlns="http://schemas.microsoft.com/appx/2016/sourcecontentgroupmap" xmlns:s="http://schemas.microsoft.com/appx/2016/sourcecontentgroupmap" >
+  <Required>
+    <ContentGroup Name="Required">
+      <File Name="*"/>
+      <File Name="WinMetadata\*"/>
+      <File Name="Properties\*"/>
+      <File Name="Assets\*"/>
+      <File Name="Posters\**"/>
+    </ContentGroup>
+  </Required>
+  <Automatic>
+    <ContentGroup Name="BoxSets">
+      <File Name="BoxSets\**"/>
+    </ContentGroup>
+    <ContentGroup Name="Albums">
+      <File Name="Albums\**"/>
+    </ContentGroup>
+  </Automatic>
+</ContentGroupMap>

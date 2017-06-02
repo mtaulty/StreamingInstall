@@ -1,0 +1,89 @@
+﻿<Page
+  x:Class="PictureApp.MainPage"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:local="using:PictureApp"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d">
+
+  <Grid
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition
+        Width="*" />
+      <ColumnDefinition
+        Width="3*" />
+    </Grid.ColumnDefinitions>
+    <ListView
+      x:Name="listViewSources"
+      Header="Picture Sources"
+      Margin="16"
+      ItemsSource="{Binding PictureSources}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextBlock
+            Margin="8"
+            Text="{Binding DisplayName}"
+            FontSize="18" />
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <GridView
+      Grid.Column="1"
+      ItemsSource="{Binding ElementName=listViewSources,Path=SelectedValue.Pictures}"
+      Margin="16"
+      Header="Pictures"
+      ItemClick="OnItemClick"
+      IsItemClickEnabled="True">
+      <GridView.ItemTemplate>
+        <DataTemplate>
+          <Grid
+            Margin="4">
+            <Grid.RowDefinitions>
+              <RowDefinition />
+              <RowDefinition
+                Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image
+              Width="240"
+              Stretch="UniformToFill"
+              Source="{Binding Source}" />
+            <TextBlock
+              Grid.Row="1"
+              Text="{Binding Name}"
+              FontSize="16"
+              Margin="4"
+              HorizontalAlignment="Center"
+              TextAlignment="Center" />
+          </Grid>
+        </DataTemplate>
+      </GridView.ItemTemplate>
+    </GridView>
+    <Grid
+      Background="Black"
+      x:Name="photoGrid"
+      Grid.ColumnSpan="2"
+      Visibility="Collapsed">
+      <Button
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Template="{x:Null}"
+        Click="OnDismissPhoto">
+        <Grid>
+          <Image
+            x:Name="photoImage"
+            Stretch="Uniform"
+            Margin="8" />
+          <TextBlock
+            FontSize="24"
+	    x:Name="txtBlank"
+            Text="Blank"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            TextAlignment="Center" />
+        </Grid>
+      </Button>
+    </Grid>
+  </Grid>
+</Page>
